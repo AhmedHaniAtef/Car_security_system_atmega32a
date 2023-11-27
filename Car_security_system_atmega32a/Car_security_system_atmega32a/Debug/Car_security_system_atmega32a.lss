@@ -1,0 +1,415 @@
+
+Car_security_system_atmega32a.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000246  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000002ba  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000e  00800060  00800060  000002ba  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002ba  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002ec  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a0  00000000  00000000  00000328  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c66  00000000  00000000  000003c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000071e  00000000  00000000  0000102e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000081e  00000000  00000000  0000174c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000204  00000000  00000000  00001f6c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006e9  00000000  00000000  00002170  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000964  00000000  00000000  00002859  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000080  00000000  00000000  000031bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 4a 00 	jmp	0x94	; 0x94 <__vector_1>
+   8:	0c 94 98 00 	jmp	0x130	; 0x130 <__vector_2>
+   c:	0c 94 e6 00 	jmp	0x1cc	; 0x1cc <__vector_3>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e4       	ldi	r30, 0x46	; 70
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 36       	cpi	r26, 0x6E	; 110
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 21 01 	jmp	0x242	; 0x242 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+  92:	ff cf       	rjmp	.-2      	; 0x92 <main>
+
+00000094 <__vector_1>:
+/*****************************************************
+*         Start of Section :  ISR declaration        *
+******************************************************/
+
+ISR(INT0_vect)
+{
+  94:	1f 92       	push	r1
+  96:	0f 92       	push	r0
+  98:	0f b6       	in	r0, 0x3f	; 63
+  9a:	0f 92       	push	r0
+  9c:	11 24       	eor	r1, r1
+  9e:	2f 93       	push	r18
+  a0:	3f 93       	push	r19
+  a2:	4f 93       	push	r20
+  a4:	5f 93       	push	r21
+  a6:	6f 93       	push	r22
+  a8:	7f 93       	push	r23
+  aa:	8f 93       	push	r24
+  ac:	9f 93       	push	r25
+  ae:	af 93       	push	r26
+  b0:	bf 93       	push	r27
+  b2:	cf 93       	push	r28
+  b4:	ef 93       	push	r30
+  b6:	ff 93       	push	r31
+    // store status register to restore it at end of ISR
+    uint8_t status_reg = (HWREG(STATUS_REGISTER));
+  b8:	cf b7       	in	r28, 0x3f	; 63
+    // clear flag to make sure the interrupt won't occur multiple times
+    INTERRUPT_EX_INT0_FLAG_CLEAR();
+  ba:	8a b7       	in	r24, 0x3a	; 58
+  bc:	80 95       	com	r24
+  be:	80 7a       	andi	r24, 0xA0	; 160
+  c0:	80 64       	ori	r24, 0x40	; 64
+  c2:	8a bf       	out	0x3a, r24	; 58
+    // enable interrupt by enabling global interrupt enable
+#ifdef  INTERRUPT_NESTING_ENABLE
+    INTERRUPT_GLOBAL_ENABLE();
+#endif
+    // call the routine for INT0 depending on the trigger case 
+    if(EXT_InterruptHandler_INT0)
+  c4:	e0 91 6c 00 	lds	r30, 0x006C	; 0x80006c <EXT_InterruptHandler_INT0>
+  c8:	f0 91 6d 00 	lds	r31, 0x006D	; 0x80006d <EXT_InterruptHandler_INT0+0x1>
+  cc:	30 97       	sbiw	r30, 0x00	; 0
+  ce:	11 f0       	breq	.+4      	; 0xd4 <__vector_1+0x40>
+    {
+        EXT_InterruptHandler_INT0();
+  d0:	09 95       	icall
+  d2:	12 c0       	rjmp	.+36     	; 0xf8 <__vector_1+0x64>
+    }
+    else if((EXT_InterruptHandler_INT0_High) && 
+  d4:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <EXT_InterruptHandler_INT0_High>
+  d8:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <EXT_InterruptHandler_INT0_High+0x1>
+  dc:	00 97       	sbiw	r24, 0x00	; 0
+  de:	61 f0       	breq	.+24     	; 0xf8 <__vector_1+0x64>
+  e0:	e0 91 62 00 	lds	r30, 0x0062	; 0x800062 <EXT_InterruptHandler_INT0_Low>
+  e4:	f0 91 63 00 	lds	r31, 0x0063	; 0x800063 <EXT_InterruptHandler_INT0_Low+0x1>
+  e8:	30 97       	sbiw	r30, 0x00	; 0
+  ea:	31 f0       	breq	.+12     	; 0xf8 <__vector_1+0x64>
+            (EXT_InterruptHandler_INT0_Low))
+    {
+        if (READ_BIT(PIND_REGISTER, INT0_PIN))
+  ec:	82 9b       	sbis	0x10, 2	; 16
+  ee:	03 c0       	rjmp	.+6      	; 0xf6 <__vector_1+0x62>
+        {
+            EXT_InterruptHandler_INT0_High();
+  f0:	fc 01       	movw	r30, r24
+  f2:	09 95       	icall
+  f4:	01 c0       	rjmp	.+2      	; 0xf8 <__vector_1+0x64>
+        }
+        else
+        {
+            EXT_InterruptHandler_INT0_Low();
+  f6:	09 95       	icall
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f8:	ff ef       	ldi	r31, 0xFF	; 255
+  fa:	20 e7       	ldi	r18, 0x70	; 112
+  fc:	82 e0       	ldi	r24, 0x02	; 2
+  fe:	f1 50       	subi	r31, 0x01	; 1
+ 100:	20 40       	sbci	r18, 0x00	; 0
+ 102:	80 40       	sbci	r24, 0x00	; 0
+ 104:	e1 f7       	brne	.-8      	; 0xfe <__vector_1+0x6a>
+ 106:	00 c0       	rjmp	.+0      	; 0x108 <__vector_1+0x74>
+ 108:	00 00       	nop
+	// solution for debouncing
+#ifdef	INT0_DEBOUNCE_CASE
+	_delay_ms(100);
+#endif
+    // restore status register 
+    HWREG(STATUS_REGISTER) = status_reg;
+ 10a:	cf bf       	out	0x3f, r28	; 63
+}
+ 10c:	ff 91       	pop	r31
+ 10e:	ef 91       	pop	r30
+ 110:	cf 91       	pop	r28
+ 112:	bf 91       	pop	r27
+ 114:	af 91       	pop	r26
+ 116:	9f 91       	pop	r25
+ 118:	8f 91       	pop	r24
+ 11a:	7f 91       	pop	r23
+ 11c:	6f 91       	pop	r22
+ 11e:	5f 91       	pop	r21
+ 120:	4f 91       	pop	r20
+ 122:	3f 91       	pop	r19
+ 124:	2f 91       	pop	r18
+ 126:	0f 90       	pop	r0
+ 128:	0f be       	out	0x3f, r0	; 63
+ 12a:	0f 90       	pop	r0
+ 12c:	1f 90       	pop	r1
+ 12e:	18 95       	reti
+
+00000130 <__vector_2>:
+
+ISR(INT1_vect)
+{
+ 130:	1f 92       	push	r1
+ 132:	0f 92       	push	r0
+ 134:	0f b6       	in	r0, 0x3f	; 63
+ 136:	0f 92       	push	r0
+ 138:	11 24       	eor	r1, r1
+ 13a:	2f 93       	push	r18
+ 13c:	3f 93       	push	r19
+ 13e:	4f 93       	push	r20
+ 140:	5f 93       	push	r21
+ 142:	6f 93       	push	r22
+ 144:	7f 93       	push	r23
+ 146:	8f 93       	push	r24
+ 148:	9f 93       	push	r25
+ 14a:	af 93       	push	r26
+ 14c:	bf 93       	push	r27
+ 14e:	cf 93       	push	r28
+ 150:	ef 93       	push	r30
+ 152:	ff 93       	push	r31
+    // store status register to restore it at end of ISR
+    uint8_t status_reg = (HWREG(STATUS_REGISTER));
+ 154:	cf b7       	in	r28, 0x3f	; 63
+    // clear flag to make sure the interrupt won't occur multiple times
+    INTERRUPT_EX_INT1_FLAG_CLEAR();
+ 156:	8a b7       	in	r24, 0x3a	; 58
+ 158:	80 95       	com	r24
+ 15a:	80 76       	andi	r24, 0x60	; 96
+ 15c:	80 68       	ori	r24, 0x80	; 128
+ 15e:	8a bf       	out	0x3a, r24	; 58
+    // enable interrupt by enabling global interrupt enable
+#ifdef  INTERRUPT_NESTING_ENABLE
+    INTERRUPT_GLOBAL_ENABLE();
+#endif
+    // call the routine for INT1 depending on the trigger case 
+    if(EXT_InterruptHandler_INT1)
+ 160:	e0 91 6a 00 	lds	r30, 0x006A	; 0x80006a <EXT_InterruptHandler_INT1>
+ 164:	f0 91 6b 00 	lds	r31, 0x006B	; 0x80006b <EXT_InterruptHandler_INT1+0x1>
+ 168:	30 97       	sbiw	r30, 0x00	; 0
+ 16a:	11 f0       	breq	.+4      	; 0x170 <__vector_2+0x40>
+    {
+        EXT_InterruptHandler_INT1();
+ 16c:	09 95       	icall
+ 16e:	12 c0       	rjmp	.+36     	; 0x194 <__vector_2+0x64>
+    }
+    else if((EXT_InterruptHandler_INT1_High) && 
+ 170:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <EXT_InterruptHandler_INT1_High>
+ 174:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <EXT_InterruptHandler_INT1_High+0x1>
+ 178:	00 97       	sbiw	r24, 0x00	; 0
+ 17a:	61 f0       	breq	.+24     	; 0x194 <__vector_2+0x64>
+ 17c:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 180:	f0 91 61 00 	lds	r31, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 184:	30 97       	sbiw	r30, 0x00	; 0
+ 186:	31 f0       	breq	.+12     	; 0x194 <__vector_2+0x64>
+            (EXT_InterruptHandler_INT1_Low))
+    {
+        if (READ_BIT(PIND_REGISTER, INT1_PIN))
+ 188:	83 9b       	sbis	0x10, 3	; 16
+ 18a:	03 c0       	rjmp	.+6      	; 0x192 <__vector_2+0x62>
+        {
+            EXT_InterruptHandler_INT1_High();
+ 18c:	fc 01       	movw	r30, r24
+ 18e:	09 95       	icall
+ 190:	01 c0       	rjmp	.+2      	; 0x194 <__vector_2+0x64>
+        }
+        else
+        {
+            EXT_InterruptHandler_INT1_Low();
+ 192:	09 95       	icall
+ 194:	ff ef       	ldi	r31, 0xFF	; 255
+ 196:	20 e7       	ldi	r18, 0x70	; 112
+ 198:	82 e0       	ldi	r24, 0x02	; 2
+ 19a:	f1 50       	subi	r31, 0x01	; 1
+ 19c:	20 40       	sbci	r18, 0x00	; 0
+ 19e:	80 40       	sbci	r24, 0x00	; 0
+ 1a0:	e1 f7       	brne	.-8      	; 0x19a <__vector_2+0x6a>
+ 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <__vector_2+0x74>
+ 1a4:	00 00       	nop
+	// solution for debouncing
+#ifdef	INT1_DEBOUNCE_CASE
+	_delay_ms(100);
+#endif
+    // restore status register 
+    HWREG(STATUS_REGISTER) = status_reg;
+ 1a6:	cf bf       	out	0x3f, r28	; 63
+}
+ 1a8:	ff 91       	pop	r31
+ 1aa:	ef 91       	pop	r30
+ 1ac:	cf 91       	pop	r28
+ 1ae:	bf 91       	pop	r27
+ 1b0:	af 91       	pop	r26
+ 1b2:	9f 91       	pop	r25
+ 1b4:	8f 91       	pop	r24
+ 1b6:	7f 91       	pop	r23
+ 1b8:	6f 91       	pop	r22
+ 1ba:	5f 91       	pop	r21
+ 1bc:	4f 91       	pop	r20
+ 1be:	3f 91       	pop	r19
+ 1c0:	2f 91       	pop	r18
+ 1c2:	0f 90       	pop	r0
+ 1c4:	0f be       	out	0x3f, r0	; 63
+ 1c6:	0f 90       	pop	r0
+ 1c8:	1f 90       	pop	r1
+ 1ca:	18 95       	reti
+
+000001cc <__vector_3>:
+
+ISR(INT2_vect)
+{
+ 1cc:	1f 92       	push	r1
+ 1ce:	0f 92       	push	r0
+ 1d0:	0f b6       	in	r0, 0x3f	; 63
+ 1d2:	0f 92       	push	r0
+ 1d4:	11 24       	eor	r1, r1
+ 1d6:	2f 93       	push	r18
+ 1d8:	3f 93       	push	r19
+ 1da:	4f 93       	push	r20
+ 1dc:	5f 93       	push	r21
+ 1de:	6f 93       	push	r22
+ 1e0:	7f 93       	push	r23
+ 1e2:	8f 93       	push	r24
+ 1e4:	9f 93       	push	r25
+ 1e6:	af 93       	push	r26
+ 1e8:	bf 93       	push	r27
+ 1ea:	cf 93       	push	r28
+ 1ec:	ef 93       	push	r30
+ 1ee:	ff 93       	push	r31
+    // store status register to restore it at end of ISR
+    uint8_t status_reg = (HWREG(STATUS_REGISTER));
+ 1f0:	cf b7       	in	r28, 0x3f	; 63
+	// clear flag to make sure the interrupt won't occur multiple times
+    INTERRUPT_EX_INT2_FLAG_CLEAR();
+ 1f2:	8a b7       	in	r24, 0x3a	; 58
+ 1f4:	80 95       	com	r24
+ 1f6:	80 7c       	andi	r24, 0xC0	; 192
+ 1f8:	80 62       	ori	r24, 0x20	; 32
+ 1fa:	8a bf       	out	0x3a, r24	; 58
+    // enable interrupt by enabling global interrupt enable
+#ifdef  INTERRUPT_NESTING_ENABLE
+    INTERRUPT_GLOBAL_ENABLE();
+#endif
+    // call the routine for INT2
+    if(EXT_InterruptHandler_INT2)
+ 1fc:	e0 91 68 00 	lds	r30, 0x0068	; 0x800068 <EXT_InterruptHandler_INT2>
+ 200:	f0 91 69 00 	lds	r31, 0x0069	; 0x800069 <EXT_InterruptHandler_INT2+0x1>
+ 204:	30 97       	sbiw	r30, 0x00	; 0
+ 206:	09 f0       	breq	.+2      	; 0x20a <__vector_3+0x3e>
+    {
+        EXT_InterruptHandler_INT2();
+ 208:	09 95       	icall
+ 20a:	2f ef       	ldi	r18, 0xFF	; 255
+ 20c:	80 e7       	ldi	r24, 0x70	; 112
+ 20e:	92 e0       	ldi	r25, 0x02	; 2
+ 210:	21 50       	subi	r18, 0x01	; 1
+ 212:	80 40       	sbci	r24, 0x00	; 0
+ 214:	90 40       	sbci	r25, 0x00	; 0
+ 216:	e1 f7       	brne	.-8      	; 0x210 <__vector_3+0x44>
+ 218:	00 c0       	rjmp	.+0      	; 0x21a <__vector_3+0x4e>
+ 21a:	00 00       	nop
+	// solution for debouncing
+#ifdef	INT2_DEBOUNCE_CASE
+	_delay_ms(100);
+#endif
+    // restore status register 
+    HWREG(STATUS_REGISTER) = status_reg;
+ 21c:	cf bf       	out	0x3f, r28	; 63
+}
+ 21e:	ff 91       	pop	r31
+ 220:	ef 91       	pop	r30
+ 222:	cf 91       	pop	r28
+ 224:	bf 91       	pop	r27
+ 226:	af 91       	pop	r26
+ 228:	9f 91       	pop	r25
+ 22a:	8f 91       	pop	r24
+ 22c:	7f 91       	pop	r23
+ 22e:	6f 91       	pop	r22
+ 230:	5f 91       	pop	r21
+ 232:	4f 91       	pop	r20
+ 234:	3f 91       	pop	r19
+ 236:	2f 91       	pop	r18
+ 238:	0f 90       	pop	r0
+ 23a:	0f be       	out	0x3f, r0	; 63
+ 23c:	0f 90       	pop	r0
+ 23e:	1f 90       	pop	r1
+ 240:	18 95       	reti
+
+00000242 <_exit>:
+ 242:	f8 94       	cli
+
+00000244 <__stop_program>:
+ 244:	ff cf       	rjmp	.-2      	; 0x244 <__stop_program>
